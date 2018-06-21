@@ -50,7 +50,7 @@ class GridWorld:
                     if self.state_matrix[row, col] == -1: row_string += " * "
             row_string += "\n"
             graph += row_string
-        print graph
+        print(graph)
 
     def step(self, action):
         if action >= self.action_space_size:
@@ -62,8 +62,8 @@ class GridWorld:
         elif action == 3: new_position = [self.position[0], self.position[1]-1]
         else: raise ValueError("The action is not included in action space")
 
-        if new_position[0] >= 0 and new_position[0] <= self.row:
-            if new_position[1] >= 0 and new_position[1] <= self.col:
+        if new_position[0] >= 0 and new_position[0] < self.row:
+            if new_position[1] >= 0 and new_position[1] < self.col:
                 if self.state_matrix[new_position[0], new_position[1]] != -1:
                     self.position = new_position
 
